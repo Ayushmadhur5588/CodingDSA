@@ -1,3 +1,5 @@
+import apple.laf.JRSUIConstants.Widget;
+
 public class l002{
 
     public static void main(String[] args){
@@ -75,7 +77,7 @@ public class l002{
    public static ArrayList<String> getSS(String str) {
     if (str.length() == 0) {
       ArrayList<String> list = new ArrayList();
-      list.add(" ");
+      list.add("");
       return list;
     } 
 
@@ -121,5 +123,19 @@ public class l002{
 
   }
 
+  public static String removeDupes(String str, int idx){
+
+    char current = str.charAt(idx);
+    String result = removeDupes(str, idx + 1);
+    char firstChar = result.charAt(0);
+    if(current == firstChar){
+      return current + "*" + result; 
+    }else{
+       return current + result; 
+    }
+    
+  }
+
+  
 
 }
