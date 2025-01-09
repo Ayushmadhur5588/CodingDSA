@@ -151,5 +151,7 @@ public class l001 {
 
         return;
     }
+//phele to node to root path mangvao
+// jab tak arraylist me maal hai
 
 }
