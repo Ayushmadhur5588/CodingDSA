@@ -151,6 +151,41 @@ public class l001 {
 
         return;
     }
+
+    public List<String> wordSubsets(String[] words1, String[] words2) {
+        List<String> ans = new ArrayList<>();
+        int[] maxFreq = new int[26];
+
+        // Step 1: Build maxFreq for words2
+        for (String word : words2) {
+            int[] freq = getFrequency(word);
+            for (int i = 0; i < 26; i++) {
+                maxFreq[i] = Math.max(maxFreq[i], freq[i]);
+            }
+        }
+
+        // Step 2: Check each word in words1
+        for (String word : words1) {
+            int[] freq = getFrequency(word);
+            if (isUniversal(freq, maxFreq)) {
+                ans.add(word);
+            }
+        }
+        return ans;
+    }
+
+    private int[] getFrequency(String word) {
+        int[] freq = new int[26];
+        for (char c : word.toCharArray()) freq[c - 'a']++;
+        return freq;
+    }
+
+    private boolean isUniversal(int[] freq, int[] maxFreq) {
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] < maxFreq[i]) return false;
+        }
+        return true;
+    }
 //phele to node to root path mangvao
 // jab tak arraylist me maal hai
 
