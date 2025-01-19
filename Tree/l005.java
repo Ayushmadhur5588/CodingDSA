@@ -85,4 +85,25 @@ public class l005 {
 
         return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
 
-    }}
+    }
+
+       // 113
+       public void pathSum(TreeNode root, int targetSum, List<Integer> smallAns, List<List<Integer>> ans) {
+        if (root == null)
+            return;
+
+        if (root.left == null && root.right == null && targetSum - root.val == 0) {
+            List<Integer> base = new ArrayList<>(smallAns);
+            base.add(root.val);
+            ans.add(base);
+            return;
+        }
+
+        smallAns.add(root.val);
+
+        pathSum(root.left, targetSum - root.val, smallAns, ans);
+        pathSum(root.right, targetSum - root.val, smallAns, ans);
+
+        smallAns.remove(smallAns.size() - 1);
+    }
+}
