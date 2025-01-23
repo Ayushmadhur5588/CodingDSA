@@ -105,5 +105,5 @@ public class l005 {
         pathSum(root.right, targetSum - root.val, smallAns, ans);
 
         smallAns.remove(smallAns.size() - 1);
-    }
+    } 
 }
