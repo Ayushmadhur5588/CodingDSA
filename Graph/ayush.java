@@ -12,6 +12,10 @@ public class ayush {
             this.w = w;
         }
    } 
+
+   @SuppressWarnings("unchecked")
+   public static ArrayList<Edge>[] graph = new ArrayList[7];
+   
    public static void main(String[] args){
     for(int i = 0; i < N; i++){
         graph[i] = new ArrayList<>();
@@ -29,8 +33,7 @@ public class ayush {
 
     }
    
-   public static int N = 7;
-   public static ArrayList<Edge>[] graph = new ArrayList[N];
+   
    public static void addEdge(int u, int v, int w){
         graph[u].add(new Edge(v, w));
         graph[v].add(new Edge(u, w));
@@ -61,10 +64,12 @@ public class ayush {
    }
 
    public static void removeEdge(int u, int v){
-   for()
+ 
    }
 
    public static void removeVtx(int u){
 
    }
+
+   
 }
