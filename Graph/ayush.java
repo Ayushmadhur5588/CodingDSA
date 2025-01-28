@@ -139,4 +139,31 @@ public class ayush {
         }
     }
 }
+
+public static void hamintonian_dfs(int src, int osrc, boolean[] vis, int NoOfEdges, String psf) {
+    if (NoOfEdges == N - 1) {
+        System.out.print(psf + src);
+        int idx = findEdge(src, osrc);
+        if (idx != -1)
+            System.out.print("*");
+
+        System.out.println();
+        return;
+    }
+
+    vis[src] = true;
+    for (Edge e : graph[src]) {
+        if (!vis[e.v])
+            hamintonian_dfs(e.v, osrc, vis, NoOfEdges + 1, psf + src);
+    }
+
+    vis[src] = false;
+}
+
+public static void hamintonianPath() {
+    boolean[] vis = new boolean[N];
+    hamintonian_dfs(0, 0, vis, 0, "");
+}
+
+
 }
