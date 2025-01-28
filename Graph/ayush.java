@@ -1,4 +1,3 @@
-package Graph;
 import java.util.ArrayList;
 
 public class ayush {
@@ -14,7 +13,8 @@ public class ayush {
    } 
 
    @SuppressWarnings("unchecked")
-   public static ArrayList<Edge>[] graph = new ArrayList[7];
+   static int N = 7;
+   public static ArrayList<Edge>[] graph = new ArrayList[N];
    
    public static void main(String[] args){
     for(int i = 0; i < N; i++){
@@ -30,7 +30,9 @@ public class ayush {
         addEdge(5, 6, 3);
     
         display();
-
+        //System.out.println(findEdge(0, 1));
+        //removeEdge(2, 3);
+        //display();
     }
    
    
@@ -41,10 +43,10 @@ public class ayush {
    
    public static void display(){
     for(int i = 0; i < N; i++){
-        System.out.print(i + "->" + " ");
+        System.out.print(i + " ->" + " ");
         for(int j = 0; j < graph[i].size(); j++){
             Edge e = graph[i].get(j);
-            System.out.print("(" + e + ")");
+            System.out.print("(" + e.v + ")");
         }
         System.out.println();
     }
@@ -64,7 +66,16 @@ public class ayush {
    }
 
    public static void removeEdge(int u, int v){
- 
+    int idx1 = findEdge(u, v);
+    int idx2  = findEdge(v, u);
+
+    if(idx1 != - 1){
+        graph[u].remove(idx1);
+    }
+
+    if(idx2 != - 1){
+        graph[v].remove(idx2);
+    }
    }
 
    public static void removeVtx(int u){
