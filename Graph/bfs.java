@@ -55,8 +55,23 @@ public class bfs {
 
     }
     
-    public static void bfs02(){
-        
+    public static void bfs02(int src, boolean[] vis){
+        LinkedList<Integer> queue = new LinkedList<>();
+        queue.addLast(src);
+        vis[src] = true;
+        while(queue.size() != 0){
+            int size = queue.size();
+            while(size-- > 0){
+                int rVtx = queue.removeFirst();
+                
+                for(Integer e : graph[rVtx]){
+                    if(!vis[e]){
+                        queue.addLast(e);
+                        vis[e] = true;
+                    }
+                }
+            }
+        }
     }
 
 }
