@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.*;
 import java.util.ArrayList;
 
 public class bfs {
@@ -92,5 +92,40 @@ public class bfs {
         }
         return res;
     }
+
+    public static boolean isBipartite(int src){
+        LinkedList<Integer> que = new LinkedList<>();
+        int[] vis = new int[N];
+        Arrays.fill(vis,-1);
+
+        que.addLast(src);
+        int color = 0;
+
+        // -1 -> undefine, 0 -> red, 1 -> green.
+        while(que.size() != 0){
+            int size = que.size();
+            while(size-- > 0){
+                int rvtx = que.removeFirst();
+                if(vis[rvtx] != -1){
+                    if(vis[rvtx] != color)  // conflict
+                      return false;
+                    
+                    continue;
+                }
+
+                vis[rvtx] = color;
+                for(int e : graph[rvtx]){
+                    if(vis[e.v] == -1){
+                        que.addLast(e.v);
+                    }
+                }
+            }
+
+            color = (color + 1) % 2;
+        }
+
+        return true;
+    }
+
 
 }
