@@ -20,13 +20,14 @@ public class bfs {
         addEdge(0, 1);
         addEdge(0, 3);
         addEdge(1, 2);
-        addEdge(2, 3);
+      //  addEdge(2, 3);
         addEdge(3, 4);
         addEdge(4, 5);
         addEdge(4, 6);
-        addEdge(5, 6);
+     //   addEdge(5, 6);
 
-        System.out.println(bfs01(0, vis));
+       // System.out.println(bfs01(0, vis));
+        System.out.println(isTree(0, graph));
     }
    
     public static int bfs01(int src, boolean[] vis){
@@ -72,6 +73,24 @@ public class bfs {
                 }
             }
         }
+    }
+
+    public static boolean isTree(int src, ArrayList<Integer>[] graph){
+        boolean res = true;
+        //call bfs get count of cycle
+        int connectedComponents = 0;
+        boolean[] vis = new boolean[graph.length];
+        int cycle = 0;
+        for(int i = 0; i < graph.length; i++){
+            if(!vis[i]){
+             connectedComponents++;
+             cycle = cycle + bfs01(i, vis);
+            }
+        }
+        if(connectedComponents != 1 || cycle > 0){
+           res = false;
+        }
+        return res;
     }
 
 }
