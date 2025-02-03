@@ -128,4 +128,42 @@ public class bfs {
     }
 
 
+    public int shortestPathBinaryMatrix(int[][] grid) {
+        int[][] dir = {{0,-1},{0,1},{-1,0},{1,0},{-1,-1},{1,-1},{-1,1},{1,1}};
+        int m = grid.length;
+        LinkedList<Integer> queue = new LinkedList<>();
+        int firstCell = grid[0][0], lastCell = grid[m-1][m-1];
+        int count = 0;
+        if(firstCell == 1 || lastCell == 1)return -1;
+        queue.addLast(firstCell);
+        
+        while(queue.size() != 0){
+            int size = queue.size();
+         
+            while(size-- > 0){
+                int removeCell = queue.removeFirst();
+                int sr = removeCell / m , sc = removeCell % m;
+
+                if(sr == m - 1 && sc == m - 1){
+                  count++;
+                  break;
+                }
+
+                for(int d = 0; d < 8; d++){
+                    int r = sr + dir[d][0];
+                    int c = sc + dir[d][1];
+
+                    if(r >= 0 && c >= 0 && r < m && c < m && grid[r][c] == 0){
+                        grid[r][c] = 1;
+                        queue.addLast(r * m + c);
+                    }
+                }
+
+            }
+            count++;
+        }
+
+        return count;
+    }
+
 }
