@@ -110,4 +110,26 @@ public class dsuQuestions {
         return true;
     }
 
+    public int numSimilarGroups(String[] strs) {
+        int n = strs.length, group = n;
+        par = new int[n];
+        for (int i = 0; i < n; i++)
+            par[i] = i;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (isSimilar(strs[i], strs[j])) {
+                    int p1 = findPar(i);
+                    int p2 = findPar(j);
+
+                    if (p1 != p2) {
+                        par[p1] = p2;
+                        group--;
+                    }
+                }
+            }
+        }
+
+        return group;
+    }
 }
