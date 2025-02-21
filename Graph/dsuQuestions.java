@@ -224,4 +224,42 @@ public class dsuQuestions {
 
         return ans;
     }
+
+    public int mrPresident(int[][] edges, int N, int K) {
+        par = new int[N + 1];
+        for (int i = 0; i <= N; i++) {
+            par[i] = i;
+        }
+
+        Arrays.sort(edges, (a, b) -> {
+            return a[2] - b[2];
+        });
+
+        ArrayList<Integer> roads = new ArrayList<>();
+
+        int components = N, mcost = 0;
+        for (int[] e : edges) {
+            int u = e[0], v = e[1], w = e[2];
+            int p1 = findPar(u), p2 = findPar(v);
+            if (p1 != p2) {
+                par[p1] = p2;
+                components--;
+                mcost += w;
+                roads.add(w);
+            }
+        }
+
+        if (components > 1)
+            return -1;
+
+        int superroad = 0;
+        for (int i = roads.size() - 1; i >= 0; i--) {
+            if (mcost <= K)
+                break;
+            mcost = mcost - roads.get(i) + 1;
+            superroad++;
+        }
+
+        return mcost <= K ? superroad : -1;
+    }
 }
