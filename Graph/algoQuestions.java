@@ -99,6 +99,43 @@ public class algoQuestions {
         return max;
     }
 
+ // 787
+ public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+    // {v,w}
+    ArrayList<int[]>[] graph = new ArrayList[n];
+    for (int i = 0; i < n; i++)
+        graph[i] = new ArrayList<>();
+
+    for (int[] f : flights) {
+        int u = f[0], v = f[1], w = f[2];
+        graph[u].add(new int[] { v, w });
+    }
+
+    // {vtx,cost,edgesCount}
+    PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> {
+        return a[1] - b[1];
+    });
+
+    pq.add(new int[] { src, 0, k + 1 });
+    while (pq.size() != 0) {
+
+        int[] rp = pq.remove();
+        int vtx = rp[0], cost = rp[1], edgesCount = rp[2];
+
+        if (edgesCount < 0)
+            continue;
+
+        if (vtx == dst)
+            return cost;
+
+        for (int[] e : graph[vtx]) {
+            int v = e[0], w = e[1];
+            pq.add(new int[] { v, cost + w, edgesCount - 1 });
+        }
+    }
+
+    return -1;
+}
 
     }
 }
