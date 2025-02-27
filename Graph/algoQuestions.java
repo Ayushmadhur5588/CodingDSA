@@ -24,5 +24,31 @@ public class algoQuestions {
 
             }
         }
-        
+
+
+        public List<List<Integer>> criticalConnections(int N, List<List<Integer>> connections) {
+            ArrayList<Integer>[] graph = new ArrayList[N];
+            for (int i = 0; i < N; i++)
+                graph[i] = new ArrayList<>();
+
+            for (List<Integer> ar : connections) {
+                graph[ar.get(0)].add(ar.get(1));
+                graph[ar.get(1)].add(ar.get(0));
+            }
+
+            low = new int[N];
+            disc = new int[N];
+
+            vis = new boolean[N];
+            List<List<Integer>> ans = new ArrayList<>();
+            for (int i = 0; i < N; i++) {
+                if (!vis[i]) {
+                    dfs(graph, 0, -1, ans);
+                }
+            }
+
+            return ans;
+        }
     }
+    }
+}
