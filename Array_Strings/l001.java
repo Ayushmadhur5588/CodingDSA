@@ -9,8 +9,43 @@ public class l001 {
 
         return maxResult;
     }
+
+    public static int min(int[] arr){
+        int minRes = (int)1e9;
+
+        for(int i = 0; i < arr.length; i++){
+            minRes = Math.min(minRes, arr[i]);
+        }
+
+        return minRes;
+    }
+
+    public static int findFirstIdx(int[] arr, int val){
+        int idx = -1;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == val){
+                idx = i;
+                break;
+            }
+        }
+        return idx;
+    }
+
+    public static int findLastIdx(int[] arr, int val){
+        int idx = -1;
+        for(int i = arr.length - 1; i >= 0; i--){
+            if(arr[i] == val){
+                idx = i;
+                break;
+            }
+        }
+        return idx;
+    }
     public static void main(String[] args){
-        int[] arr = {3,2,65,71,99,1};
+        int[] arr = {3,2,65,1,71,99,1};
         System.out.println(max(arr));
+        System.out.println(min(arr));
+        System.out.println(findFirstIdx(arr,1));
+        System.out.println(findLastIdx(arr,1));
     }
 }
