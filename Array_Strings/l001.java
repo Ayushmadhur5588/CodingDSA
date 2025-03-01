@@ -59,6 +59,16 @@ public class l001 {
             ans[arr[i]] = i;
         }
     }
+
+    public static void rotate(int[] arr, int k) {
+        int n = arr.length;
+        k = (k % n + n) % n;
+        
+        reverse(arr,0,n - 1);
+        reverse(arr,0,k - 1);
+        reverse(arr,k, n - 1);
+    }
+
     public static void main(String[] args){
         int[] arr = {3,2,65,1,71,99,1};
         System.out.println(max(arr));
