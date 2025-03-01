@@ -53,6 +53,12 @@ public class l001 {
         }
     }
   
+    public static void inverse(int[] arr) {
+        int[] ans = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            ans[arr[i]] = i;
+        }
+    }
     public static void main(String[] args){
         int[] arr = {3,2,65,1,71,99,1};
         System.out.println(max(arr));
