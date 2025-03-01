@@ -41,6 +41,18 @@ public class l001 {
         }
         return idx;
     }
+  
+    public static void reverseArr(int[] arr){
+        int si = 0, ei = arr.length - 1;
+        while(si < ei){
+            int temp = arr[si];
+            arr[si] = arr[ei];
+            arr[ei] = temp;
+            si++;
+            ei--;
+        }
+    }
+  
     public static void main(String[] args){
         int[] arr = {3,2,65,1,71,99,1};
         System.out.println(max(arr));
@@ -48,4 +60,8 @@ public class l001 {
         System.out.println(findFirstIdx(arr,1));
         System.out.println(findLastIdx(arr,1));
     }
+
+    //reverse
+    //span
+    //
 }
