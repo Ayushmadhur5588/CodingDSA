@@ -24,14 +24,20 @@ public class l002 {
         }
     }
 
-    public static void display(int[][] arr) {
+    public static int maximum(int[][] arr) {
+        int maxEle = -(int) 1e9;
+        for (int[] ar : arr)
+            for (int e : ar)
+                maxEle = Math.max(maxEle, e);
+        return maxEle;
+    }
 
-        for (int[] ar : arr) {
-            for (int e : ar) {
-                System.out.print(e);
-            }
-            System.out.println();
-        }
-    
-        
+    public static int minimum(int[][] arr) {
+        int minEle = (int) 1e9;
+        for (int[] ar : arr)
+            for (int e : ar)
+                minEle = Math.min(minEle, e);
+        return minEle;
+    }
+
     }
