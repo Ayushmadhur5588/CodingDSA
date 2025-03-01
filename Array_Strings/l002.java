@@ -40,4 +40,13 @@ public class l002 {
         return minEle;
     }
 
+    public static boolean find(int[][] arr, int data) {
+        for (int[] ar : arr)
+            for (int e : ar)
+                if (e == data)
+                    return true;
+
+        return false;
+    }
+
     }
