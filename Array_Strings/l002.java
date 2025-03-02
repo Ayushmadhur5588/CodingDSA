@@ -159,6 +159,37 @@ public class l002 {
                     }
                 }
             }
+        
+    }
+
+    public static void spiral(int[][] arr){
+        int n = arr.length, m = arr[0].length;
+        int tne = n * m;
+        int rmin = 0, cmin = 0, rmax = n-1, cmax = m-1;
+        while(tne > 0){
+            for(int i = rmin; i <= rmax && tne > 0; i++){
+                tne--;
+                System.out.println(arr[i][cmin]);
+            }
+            cmin++;
+            
+            for(int i = cmin; i <= cmax && tne > 0; i++){
+                tne--;
+                System.out.println(arr[rmax][i]);
+            }
+            rmax--;
+            
+            for(int i = rmax; i >= rmin && tne > 0; i--){
+                tne--;
+                System.out.println(arr[i][cmax]);
+            }
+            cmax--;
+            
+            for(int i = cmax; i >= cmin && tne > 0; i--){
+                tne--;
+                System.out.println(arr[rmin][i]);
+            }
+            rmin++;
         }
     }
 
