@@ -119,6 +119,47 @@ public class l002 {
             j1++;
             j2--;
         }
+
+        public static void exitPoint(int[][] arr){
+            int r = 0, c= 0, dir = 0;
+            while(true){
+                
+                dir = (dir + arr[r][c]) % 4;
+                if(dir == 0){
+                    c++;
+                    if(c == arr[0].length){
+                        System.out.println(r);
+                        System.out.println(c-1);
+                        break;
+                    }
+                
+                }else if(dir == 1){
+                    r++;
+                    
+                    if(r == arr.length){
+                        System.out.println(r-1);
+                        System.out.println(c);
+                        break;
+                    }
+                }else if(dir == 2){
+                    c--;
+                    
+                    if(c == -1){
+                        System.out.println(r);
+                        System.out.println(c+1);
+                        break;
+                    }
+                }else{
+                    r--;
+                
+                    if(r == -1){
+                        System.out.println(r+1);
+                        System.out.println(c);
+                        break;
+                    }
+                }
+            }
+        }
     }
 
 
