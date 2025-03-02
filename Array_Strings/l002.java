@@ -82,4 +82,16 @@ public class l002 {
             }
         }
     }
+
+    public static void diagonalTraversal(int[][] arr) {
+        int n = arr.length;
+        int m = arr[0].length;
+
+        for (int gap = 0; gap < m; gap++) {
+            for (int i = 0, j = gap; i < n && j < m; i++, j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+        }
+    }
+
     }
