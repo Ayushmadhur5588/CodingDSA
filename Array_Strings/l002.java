@@ -94,4 +94,32 @@ public class l002 {
         }
     }
 
+    public static void rotate90(int[][] arr){
+        int n = arr.length;
+        int m = arr[0].length;
+ 
+        // Transpose
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < m; j++) {
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
+            }
+        }
+
+       // reverse of columns
+        int j1 = 0, j2 = m - 1;
+        while(j1 < j2){
+            for(int i = 0;i < n;i++){
+                int temp = arr[i][j1];
+                arr[i][j1] = arr[i][j2];
+                arr[i][j2] = temp;
+            }
+
+            j1++;
+            j2--;
+        }
+    }
+
+
     }
