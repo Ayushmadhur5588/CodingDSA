@@ -74,4 +74,17 @@ public class l003 {
         return sb.toString();
     }
 
+    public static String toggle(String str) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'a' && ch <= 'z')
+                sb.append((char) (ch - 'a' + 'A'));
+            else
+                sb.append((char) (ch - 'A' + 'a'));
+        }
+
+        return sb.toString();
+    }
+
 }
