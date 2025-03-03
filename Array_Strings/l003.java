@@ -20,4 +20,14 @@ public class l003 {
         }
     }
 
+    public static void getAllPalindromicSubstrings(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            for (int len = 1; i + len <= str.length(); len++) {
+                String s = str.substring(i, i + len);
+                if (isPalindrome(s))
+                    System.out.println(s);
+            }
+        }
+    }
+
 }
