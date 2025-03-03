@@ -12,4 +12,12 @@ public class l003 {
         return true;
     }
 
+    public static void getAllSubstrings(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            for (int len = 1; i + len <= str.length(); len++) {
+                System.out.println(str.substring(i, i + len));
+            }
+        }
+    }
+
 }
