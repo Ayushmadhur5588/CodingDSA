@@ -87,4 +87,21 @@ public class l003 {
         return sb.toString();
     }
 
+    public static String diffrenceOfTwoNumber(String str) {
+        if (str.length() <= 1)
+            return str;
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(str.charAt(0));
+        for (int i = 1; i < str.length(); i++) {
+            char ch0 = str.charAt(i - 1);
+            char ch1 = str.charAt(i);
+            sb.append(ch1 - ch0);
+            sb.append(ch1);
+        }
+
+        return sb.toString();
+    }
+
+
 }
