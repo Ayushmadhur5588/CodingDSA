@@ -60,4 +60,28 @@ public class l001 {
 
         System.out.println(ans);
     }
+
+    public static void positionOfAllChar(String str) {
+        HashMap<Character, ArrayList<Integer>> map = new HashMap<>(); // Character, int[]
+        // for (int i = 0; i < str.length(); i++) {
+        // char ch = str.charAt(i);
+        // if (!map.containsKey(ch))
+        // map.put(ch, new ArrayList<>());
+
+        // map.get(ch).add(i);
+        // }
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            map.putIfAbsent(ch, new ArrayList<>()); // new int[k]
+            map.get(ch).add(i);
+        }
+
+        // System.out.println(map);
+        for (Character ch : map.keySet()) {
+            System.out.println(ch + " -> " + map.get(ch));
+        }
+    }
+
+
 }
