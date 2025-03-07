@@ -1,0 +1,45 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+
+public class l001 {
+
+    public static void basic_01() {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Nepal", 233);
+        map.put("UK", 45);
+        map.put("Germany", 35);
+        map.put("USA", 20);
+        map.put("Russia", 18);
+        map.put("India", 10);
+        map.put("USA", 19);
+
+        // System.out.println(map);
+        for (String keys : map.keySet()) {
+            System.out.println(keys + " -> " + map.get(keys));
+        }
+
+        String key = "USA";
+        if (map.containsKey(key))
+            System.out.println(map.get(key));
+        else
+            System.out.println("not Found");
+
+    }
+
+    public static void printFrequency(String str) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        // for (int i = 0; i < str.length(); i++) {
+        // char ch = str.charAt(i);
+        // if (map.containsKey(ch))
+        // map.put(ch, map.get(ch) + 1);
+        // else
+        // map.put(ch, 1);
+        // }
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+    }
+
+}
