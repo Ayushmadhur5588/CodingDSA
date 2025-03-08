@@ -146,5 +146,23 @@ public class l001 {
         return ans;
     }
 
+    public static void kSortedArrays(int[] arr, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int idx = 0;
+        for (int ele : arr) {
+            pq.add(ele);
+            if (pq.size() > k) {
+                arr[idx++] = pq.remove();
+            }
+        }
+
+        while (pq.size() != 0) {
+            arr[idx++] = pq.remove();
+        }
+
+        for (int ele : arr)
+            System.out.println(ele);
+    }
+
 
 }
