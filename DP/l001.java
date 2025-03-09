@@ -16,4 +16,17 @@ public class l001 {
         System.out.println();
     }
 
+    public static int fibo_memo(int n, int[] dp) {
+        if (n <= 1) {
+            return dp[n] = n;
+        }
+
+        if (dp[n] != 0)
+            return dp[n];
+
+        int ans = fibo_memo(n - 1, dp) + fibo_memo(n - 2, dp);
+        return dp[n] = ans;
+    }
+
+
 }
