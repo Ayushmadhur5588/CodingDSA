@@ -28,5 +28,19 @@ public class l001 {
         return dp[n] = ans;
     }
 
+    public static int fibo_DP(int N, int[] dp) {
+        for (int n = 0; n <= N; n++) {
+            if (n <= 1) {
+                dp[n] = n;
+                continue;
+            }
+
+            int ans = dp[n - 1] + dp[n - 2];// fibo_memo(n - 1, dp) + fibo_memo(n - 2, dp);
+            dp[n] = ans;
+        }
+
+        return dp[N];
+    }
+
 
 }
