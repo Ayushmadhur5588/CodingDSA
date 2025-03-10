@@ -75,4 +75,18 @@ public class l001 {
         int steps = climbStairs(n - 1, dp) + climbStairs(n - 2, dp);
         return dp[n] = steps;
     }
+
+    public int climbStairs_DP(int N, int[] dp) {
+        for (int n = 0; n <= N; n++) {
+            if (n <= 1) {
+                dp[n] = 1;
+                continue;
+            }
+
+            int steps = dp[n - 1] + dp[n - 2];// climbStairs(n-1,dp) + climbStairs(n-2,dp);
+            dp[n] = steps;
+        }
+
+        return dp[N];
+    }
 }
