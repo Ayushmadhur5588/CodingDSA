@@ -54,4 +54,25 @@ public class l001 {
 
         return a;
     }
+
+    public static void fibo() {
+        int n = 6;
+        int[] dp = new int[n + 1];
+        fibo_DP(n, dp);
+        System.out.println(fibo_Opti(n));
+
+        print(dp);
+    }
+
+    public int climbStairs(int n, int[] dp) {
+        if (n <= 1) {
+            return dp[n] = 1;
+        }
+
+        if (dp[n] != 0)
+            return dp[n];
+
+        int steps = climbStairs(n - 1, dp) + climbStairs(n - 2, dp);
+        return dp[n] = steps;
+    }
 }
