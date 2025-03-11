@@ -89,4 +89,59 @@ public class l001 {
 
         return dp[N];
     }
+
+    public int climbStairs_Opti(int n) {
+        int a = 1, b = 1;
+        for (int i = 0; i < n; i++) {
+            int sum = a + b;
+            a = b;
+            b = sum;
+        }
+
+        return a;
+
+    }
+
+    public int climbStairs(int n) {
+        int[] dp = new int[n + 1];
+        // int ans = climbStairs(n,dp);
+        // int ans = climbStairs_DP(n,dp);
+        int ans = climbStairs_Opti(n);
+
+        return ans;
+    }
+
+    public int minCostClimbingStairs(int[] cost, int n, int[] dp) {
+        if (n <= 1) {
+            return dp[n] = cost[n];
+        }
+        if (dp[n] != 0)
+            return dp[n];
+
+        int minCostOfOneStep = minCostClimbingStairs(cost, n - 1, dp);
+        int minCostOfTwoStep = minCostClimbingStairs(cost, n - 2, dp);
+
+        int ans = Math.min(minCostOfOneStep, minCostOfTwoStep) + (n != cost.length ? cost[n] : 0);
+
+        return dp[n] = ans;
+    }
+
+    public int minCostClimbingStairs_DP(int[] cost, int N, int[] dp) {
+
+        for (int n = 0; n <= N; n++) {
+            if (n <= 1) {
+                dp[n] = cost[n];
+                continue;
+            }
+
+            int minCostOfOneStep = dp[n - 1];// minCostClimbingStairs(cost, n - 1, dp);
+            int minCostOfTwoStep = dp[n - 2];// minCostClimbingStairs(cost, n - 2, dp);
+
+            int ans = Math.min(minCostOfOneStep, minCostOfTwoStep) + (n != cost.length ? cost[n] : 0);
+
+            dp[n] = ans;
+        }
+
+        return dp[N];
+    }
 }
