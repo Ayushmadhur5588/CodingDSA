@@ -144,4 +144,14 @@ public class l001 {
 
         return dp[N];
     }
+    public int minCostClimbingStairs_Opti(int[] cost, int N) {
+
+        int a = cost[0], b = cost[1];
+        for (int i = 2; i <= N; i++) {
+            int minVal = Math.min(a, b) + (i != cost.length ? cost[i] : 0);
+            a = b;
+            b = minVal;
+        }
+        return b;
+    }
 }
