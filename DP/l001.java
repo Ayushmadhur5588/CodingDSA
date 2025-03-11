@@ -192,4 +192,18 @@ public class l001 {
         }
         return dp[N];
     }
+    public static int boardPath_Opti(int n) {
+        LinkedList<Integer> ll = new LinkedList<>();
+
+        ll.addLast(1);
+        ll.addLast(1);
+        for (int i = 2; i <= n; i++) {
+            if (ll.size() <= 6)
+                ll.addLast(ll.getLast() * 2);
+            else
+                ll.addLast(ll.getLast() * 2 - ll.removeFirst());
+        }
+
+        return ll.getLast();
+    }
 }
