@@ -161,4 +161,19 @@ public class l001 {
         return ans;
 
     }
+    public static int boardPath_memo(int n, int[] dp) {
+        if (n == 0) {
+            return dp[n] = 1;
+        }
+
+        if (dp[n] != 0)
+            return dp[n];
+
+        int count = 0;
+        for (int dice = 1; dice <= 6 && n - dice >= 0; dice++) {
+            count += boardPath_memo(n - dice, dp);
+        }
+
+        return dp[n] = count;
+    }
 }
