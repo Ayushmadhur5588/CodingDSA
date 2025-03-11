@@ -154,4 +154,11 @@ public class l001 {
         }
         return b;
     }
+    public int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        int[] dp = new int[n + 1];
+        int ans = minCostClimbingStairs(cost, n, dp);
+        return ans;
+
+    }
 }
