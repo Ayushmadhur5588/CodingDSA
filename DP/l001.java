@@ -311,4 +311,16 @@ public class l001 {
         return dp[SR][SC];
     }
 
+    public static void mazePath() {
+        int n = 4, m = 5;
+        int[][] dp = new int[n][m];
+        int[][] dir = { { 1, 0 }, { 0, 1 }, { 1, 1 } };
+
+        // System.out.println(mazePath_HDV(0, 0, n - 1, m - 1, dir, dp));
+        // System.out.println(mazePath_HDV_DP(0, 0, n - 1, m - 1, dir, dp));
+        System.out.println(mazePathJump_HDV(0, 0, n - 1, m - 1, dir, dp));
+        print2D(dp);
+
+    }
+
 }
