@@ -323,4 +323,19 @@ public class l001 {
 
     }
 
+     // Friends Pairing
+     public static int friendsPairing_memo(int n, int[] dp) {
+        if (n <= 1) {
+            return dp[n] = 1;
+        }
+
+        if (dp[n] != 0)
+            return dp[n];
+
+        int single = friendsPairing_memo(n - 1, dp);
+        int pairup = friendsPairing_memo(n - 2, dp) * (n - 1);
+
+        return dp[n] = single + pairup;
+    }
+
 }
