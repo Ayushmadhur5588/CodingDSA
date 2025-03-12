@@ -261,4 +261,27 @@ public class l001 {
         return dp[SR][SC];
     }
 
+    public static int mazePathJump_HDV(int sr, int sc, int er, int ec, int[][] dir, int[][] dp) {
+        if (sr == er && sc == ec) {
+            return dp[sr][sc] = 1;
+        }
+
+        if (dp[sr][sc] != 0)
+            return dp[sr][sc];
+
+        int count = 0;
+        for (int d = 0; d < dir.length; d++) {
+            for (int rad = 1; rad <= Math.max(er, ec); rad++) {
+                int r = sr + rad * dir[d][0];
+                int c = sc + rad * dir[d][1];
+                if (r >= 0 && c >= 0 && r <= er && c <= ec) {
+                    count += mazePathJump_HDV(r, c, er, ec, dir, dp);
+                } else
+                    break;
+            }
+        }
+
+        return dp[sr][sc] = count;
+    }
+
 }
