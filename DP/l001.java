@@ -215,4 +215,24 @@ public class l001 {
 
         print(dp);
     }
+
+    public static int mazePath_HDV(int sr, int sc, int er, int ec, int[][] dir, int[][] dp) {
+        if (sr == er && sc == ec) {
+            return dp[sr][sc] = 1;
+        }
+
+        if (dp[sr][sc] != 0)
+            return dp[sr][sc];
+
+        int count = 0;
+        for (int d = 0; d < dir.length; d++) {
+            int r = sr + dir[d][0];
+            int c = sc + dir[d][1];
+            if (r >= 0 && c >= 0 && r <= er && c <= ec) {
+                count += mazePath_HDV(r, c, er, ec, dir, dp);
+            }
+        }
+
+        return dp[sr][sc] = count;
+    }
 }
