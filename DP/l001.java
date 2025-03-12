@@ -206,4 +206,13 @@ public class l001 {
 
         return ll.getLast();
     }
+    public static void boardPath() {
+        int n = 20;
+        int[] dp = new int[n + 1];
+        // System.out.println(boardPath_memo(n, dp));
+        System.out.println(boardPath_dp(n, dp));
+        System.out.println(boardPath_Opti(n));
+
+        print(dp);
+    }
 }
