@@ -374,5 +374,26 @@ public class l001 {
         print2D(dp);
         return maxGold;
     }
+    // min Cost path.======================================
+    public static int minCostPath(int[][] arr, int r, int c, int[][] dp, int[][] dir) {
+        int n = arr.length, m = arr[0].length;
+        if (r == n - 1 && c == m - 1) {
+            return dp[r][c] = arr[r][c];
+        }
+
+        if (dp[r][c] != (int) 1e9)
+            return dp[r][c];
+        int minCost = (int) 1e9;
+        for (int d = 0; d < dir.length; d++) {
+            int x = r + dir[d][0];
+            int y = c + dir[d][1];
+
+            if (x >= 0 && y >= 0 && x < n && y < m)
+                minCost = Math.min(minCost, minCostPath(arr, x, y, dp, dir) + arr[r][c]);
+        }
+
+        return dp[r][c] = minCost;
+    }
+
 
 }
