@@ -337,5 +337,24 @@ public class l001 {
 
         return dp[n] = single + pairup;
     }
+    public static int goldMine_memo(int[][] arr, int r, int c, int[][] dp, int[][] dir) {
+        if (c == arr[0].length - 1) {
+            return dp[r][c] = arr[r][c];
+        }
+
+        if (dp[r][c] != -1)
+            return dp[r][c];
+
+        int maxGold = 0;
+        for (int d = 0; d < dir.length; d++) {
+            int x = r + dir[d][0];
+            int y = c + dir[d][1];
+
+            if (x >= 0 && y >= 0 && x < arr.length && y < arr[0].length)
+                maxGold = Math.max(maxGold, goldMine_memo(arr, x, y, dp, dir) + arr[r][c]);
+        }
+
+        return dp[r][c] = maxGold;
+    }
 
 }
