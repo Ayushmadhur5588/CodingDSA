@@ -357,4 +357,22 @@ public class l001 {
         return dp[r][c] = maxGold;
     }
 
+    public static int goldMine_memo(int[][] arr) {
+
+        int n = arr.length, m = arr[0].length;
+        int[][] dir = { { 0, 1 }, { 1, 1 }, { -1, 1 } };
+
+        int[][] dp = new int[n][m];
+        for (int[] d : dp)
+            Arrays.fill(d, -1);
+
+        int maxGold = 0;
+        for (int i = 0; i < n; i++) {
+            maxGold = Math.max(maxGold, goldMine_memo(arr, i, 0, dp, dir));
+        }
+
+        print2D(dp);
+        return maxGold;
+    }
+
 }
