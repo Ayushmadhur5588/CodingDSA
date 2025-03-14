@@ -394,6 +394,19 @@ public class l001 {
 
         return dp[r][c] = minCost;
     }
+    public static void minCost() {
+        int[][] arr;
 
+        int n = arr.length, m = arr[0].length;
+        int[][] dir = { { 0, 1 }, { 1, 0 }, { 1, 1 } };
+
+        int[][] dp = new int[n][m];
+
+        for (int[] d : dp)
+            Arrays.fill(d, (int) 1e9);
+
+        System.out.println(minCostPath(arr, 0, 0, dp, dir));
+        print2D(dp);
+    }
 
 }
