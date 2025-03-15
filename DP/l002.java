@@ -87,4 +87,18 @@ public class l002 {
         // print2D(dp);
 
     }
+        // LPS : Longest Palindromic Substring
+    public static void LPS(String str, boolean[][] dp) {
+        int n = str.length();
+        for (int gap = 0; gap < n; gap++) {
+            for (int i = 0, j = gap; j < n; i++, j++) {
+                if (gap == 0)
+                    dp[i][j] = true;
+                else if (gap == 1)
+                    dp[i][j] = str.charAt(i) == str.charAt(j);
+                else
+                    dp[i][j] = str.charAt(i) == str.charAt(j) && dp[i + 1][j - 1];
+            }
+        }
+    }
 }
