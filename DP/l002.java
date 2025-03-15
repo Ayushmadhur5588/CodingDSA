@@ -50,4 +50,27 @@ public class l002 {
 
         return dp[I][J];
     }
+
+    public static String LPSS_StringDP(String str) {
+        int n = str.length();
+        String[][] dp = new String[n][n];
+        for (String[] d : dp)
+            Arrays.fill(d, "");
+
+        for (int gap = 0; gap < n; gap++) {
+            for (int i = 0, j = gap; j < n; i++, j++) {
+                if (i >= j) {
+                    dp[i][j] = (i == j) ? str.charAt(i) + "" : "";
+                    continue;
+                }
+
+                if (str.charAt(i) == str.charAt(j))
+                    dp[i][j] = str.charAt(i) + dp[i + 1][j - 1] + str.charAt(j);
+                else
+                    dp[i][j] = dp[i + 1][j].length() > dp[i][j - 1].length() ? dp[i + 1][j] : dp[i][j - 1];
+            }
+        }
+
+        return dp[0][n - 1];
+    }
 }
