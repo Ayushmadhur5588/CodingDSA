@@ -73,4 +73,18 @@ public class l002 {
 
         return dp[0][n - 1];
     }
+
+    public static void longestPalindromicSubsequence() {
+        String str = "peeeddfeeeep";
+        int n = str.length();
+        int[][] dp = new int[n][n];
+
+        // for (int[] d : dp)
+        // Arrays.fill(d, -1);
+
+        // System.out.println(LPSS(str, 0, n - 1, dp));
+        System.out.println(LPSS_StringDP(str));
+        // print2D(dp);
+
+    }
 }
