@@ -215,4 +215,13 @@ public class l001 {
         return ans;
     }
 
+    public static ArrayList<Integer> mergeKSortedLists(ArrayList<ArrayList<Integer>> lists, int si, int ei) {
+        if (si == ei)
+            return lists.get(si);
+        int mid = (si + ei) / 2;
+        ArrayList<Integer> list1 = mergeKSortedLists(lists, si, mid);
+        ArrayList<Integer> list2 = mergeKSortedLists(lists, mid + 1, ei);
+        return mergeTwoList(list1, list2);
+    }
+
 }
