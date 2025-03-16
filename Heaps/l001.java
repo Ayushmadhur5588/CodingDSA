@@ -192,4 +192,27 @@ public class l001 {
         return rv;
     }
 
+    public static ArrayList<Integer> mergeTwoList(ArrayList<Integer> list1, ArrayList<Integer> list2) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int i = 0, n = list1.size();
+        int j = 0, m = list2.size();
+
+        while (i < n && j < m) {
+            if (list1.get(i) < list2.get(j))
+                ans.add(list1.get(i++));
+            else
+                ans.add(list2.get(j++));
+        }
+
+        while (i < n) {
+            ans.add(list1.get(i++));
+        }
+
+        while (j < m) {
+            ans.add(list2.get(j++));
+        }
+
+        return ans;
+    }
+
 }
