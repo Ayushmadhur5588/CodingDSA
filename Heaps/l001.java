@@ -224,4 +224,28 @@ public class l001 {
         return mergeTwoList(list1, list2);
     }
 
+
+      // Leetcode 215
+
+      public void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+
+    public void downHeapify(int[] nums, int pi, int li) {
+        int maxIdx = pi;
+        int lci = 2 * pi + 1;
+        int rci = 2 * pi + 2;
+
+        if (lci <= li && nums[lci] > nums[maxIdx])
+            maxIdx = lci;
+        if (rci <= li && nums[rci] > nums[maxIdx])
+            maxIdx = rci;
+
+        if (pi != maxIdx) {
+            swap(nums, pi, maxIdx);
+            downHeapify(nums, maxIdx, li);
+        }
+    }
 }
