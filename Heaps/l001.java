@@ -248,4 +248,21 @@ public class l001 {
             downHeapify(nums, maxIdx, li);
         }
     }
+
+
+    public int findKthLargest(int[] nums, int k) {
+        int n = nums.length;
+        for (int i = n - 1; i >= 0; i--)
+            downHeapify(nums, i, n - 1);
+
+        int li = n - 1;
+        while (k > 1) {
+            swap(nums, 0, li--);
+            downHeapify(nums, 0, li);
+            k--;
+        }
+
+        return nums[0];
+    }
+
 }
