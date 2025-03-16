@@ -265,4 +265,27 @@ public class l001 {
         return nums[0];
     }
 
+    public int kthSmallest(int[][] matrix, int k) {
+        int n = matrix.length, m = matrix[0].length;
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> {
+            return matrix[a / m][a % m] - matrix[b / m][b % m];
+        });
+
+        for (int i = 0; i < n; i++)
+            pq.add(i * m + 0);
+
+        int r = 0;
+        int c = 0;
+
+        while (--k > 0) {
+            int idx = pq.remove();
+            r = idx / m;
+            c = idx % m + 1;
+            if (c < m)
+                pq.add(r * m + c);
+        }
+
+        return matrix[r][c];
+    }
+
 }
