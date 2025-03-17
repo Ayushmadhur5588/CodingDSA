@@ -33,6 +33,25 @@ public class l001 {
         tail = head;
         head = prev;
     }
+    public Node getNodeAt(int idx) {
+        Node curr = head;
+        while (idx-- > 0) {
+            curr = curr.next;
+        }
+
+        return curr;
+    }
+
+    public int length() {
+        int len = 0;
+        Node curr = head;
+        while (curr != null) {
+            curr = curr.next;
+            len++;
+        }
+
+        return len;
+    }
 
 
 }
