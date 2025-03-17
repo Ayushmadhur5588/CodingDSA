@@ -53,5 +53,22 @@ public class l001 {
         return len;
     }
 
+    public void reverseDI() {
+        int i = 0;
+        int j = length() - 1;
+
+        while (i < j) {
+            Node in = getNodeAt(i);
+            Node jn = getNodeAt(j);
+
+            int temp = in.data;
+            in.data = jn.data;
+            jn.data = temp;
+
+            i++;
+            j--;
+        }
+    }
+
 
 }
