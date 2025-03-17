@@ -69,6 +69,33 @@ public class l001 {
             j--;
         }
     }
+    private void displayReverseHelper(Node node) {
+        if (node == null)
+            return;
+
+        displayReverseHelper(node.next);
+        System.out.print(node.data + " ");
+    }
+
+    private void reversePRHelper(Node node) {
+        if (node.next == null) {
+            Node temp = head;
+            head = tail;
+            tail = temp;
+
+            return;
+        }
+
+        reversePRHelper(node.next);
+
+        Node forw = node.next;
+        forw.next = node;
+    }
+
+    public void reversePR() {
+        reversePRHelper(head);
+        tail.next = null;
+    }
 
 
 }
