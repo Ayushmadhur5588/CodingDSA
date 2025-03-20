@@ -16,6 +16,19 @@ public class l001 {
         return res;
     }
 
+    public static long DecimalToBase(long n,long b){
+        long pow = 1,res = 0;
+        while(n != 0){
+            long rem = n % b;
+            n /= b;
+            
+            res += rem * pow;
+            pow *= 10;
+        }
+
+        return res;
+    }
+
    
     public static void main(String[] args) {
         long n = scn.nextLong();
