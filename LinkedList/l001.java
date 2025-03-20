@@ -180,4 +180,23 @@ public class l001 {
 
         return ans;
     }
+
+    public static LinkedList addTwoLists(LinkedList one, LinkedList two) {
+
+        LinkedList ans = new LinkedList();
+
+        int carry = 0;
+
+        if (one.size() > two.size())
+            carry = addTwoLists(one.head, two.head, one.size(), two.size(), ans);
+        else
+            carry = addTwoLists(two.head, one.head, two.size(), one.size(), ans);
+
+        if (carry == 1) {
+            ans.addFirst(1);
+        }
+
+        return ans;
+    }
+
 }
