@@ -60,4 +60,17 @@ public class l002{
         return true;
     }
 
+    public static void primeNumbers(){
+        int t = scn.nextInt();
+        for(int i = 1; i <= t; i++){
+            int n = scn.nextInt();
+            
+            if(isPrime()){
+                System.out.println("prime");
+            }else{
+                System.out.println("not prime");
+            }
+        }
+    }
+
 }
