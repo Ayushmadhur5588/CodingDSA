@@ -93,4 +93,18 @@ public class l002{
         return divisor;
     }
 
+    public static int lcm(int a,int b,int g){
+        return (a * (b / g));
+    }
+
+    public static int digits(int n){
+        int count = 0;
+        while(n != 0){
+            count++;
+            n /=10;
+        }
+        
+        return count;
+    } 
+
 }
