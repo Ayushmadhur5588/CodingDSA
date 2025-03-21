@@ -40,4 +40,24 @@ public class l002{
         }
     }
 
+
+    public static void printNTime(int n){
+        for(int i = 1; i <= n; i++){
+            System.out.println("Hello!");
+        }
+    }
+
+    public static void printTableOfN(int n){
+        for(int i = 1;i <= 10;i++){
+            System.out.println(n + " X " +  i + " = " + n * i);
+        }
+    } 
+
+    public static boolean isPrime(int n){
+        for(int i = 2; i*i <= n; i++){
+            if(n % i == 0) return false;
+        }
+        return true;
+    }
+
 }
