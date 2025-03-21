@@ -73,4 +73,24 @@ public class l002{
         }
     }
 
+    public static void primeTillN(int n,int m){
+        for(int i = n; i <= m; i++){
+            if(isPrime(i)) System.out.println(i);
+        }
+    }
+
+    public static int gcd(int a,int b){
+    
+        int divisor = a;
+        int dividend = b;
+        
+        while(dividend % divisor != 0){
+            int rem = dividend % divisor;
+            dividend = divisor;
+            divisor = rem;
+        }
+        
+        return divisor;
+    }
+
 }
