@@ -25,7 +25,7 @@ public class l001 {
             res += rem * pow;
             pow *= 10;
         }
-
+           
         return res;
     }
 
