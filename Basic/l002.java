@@ -107,4 +107,25 @@ public class l002{
         return count;
     } 
 
+    public static int rotate(int n,int r){
+        int len = digits(n);
+        // r %= len;
+        // if(r < 0) r += len;
+
+        r = (r % len + len) % len;
+
+        int mul = 1;
+        int div = 1;
+        
+        for(int i=1;i<=len;i++){
+            if(i <= r) div *= 10;
+            else mul *= 10;
+        }
+        
+        int a = n % div;
+        int b = n / div;
+        
+        return a * mul + b;
+    }
+
 }
