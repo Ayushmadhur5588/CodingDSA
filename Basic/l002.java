@@ -126,6 +126,6 @@ public class l002{
         int b = n / div;
         
         return a * mul + b;
-    }
+    } 
 
 }
