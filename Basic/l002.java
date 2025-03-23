@@ -141,4 +141,23 @@ public class l002{
         return res;
     }
 
+    public static long anyBaseAdd(long n,long m,long b){
+        long carry = 0, pow = 1, res = 0;
+        while(n != 0 || m != 0 || carry != 0){
+            long sum = 0;
+            sum += carry + n % 10 + m % 10;
+            n /= 10;
+            m /= 10;
+
+            int ld = sum % b;
+            carry = sum / b;
+            
+            res += ld * pow;
+            pow *= 10;
+        }
+
+        return res;
+    }
+    
+
 }
