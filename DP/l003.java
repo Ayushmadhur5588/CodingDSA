@@ -57,15 +57,58 @@ public class l003 {
 
     public static void fibo(int n) {
         int[] dp = new int[n + 1];
-      //  int res = fib_memo(n, dp);
+        // int res = fib_memo(n, dp);
         int res = fib_DP(n, dp);
         System.out.println(res);
         print(dp);
     }
 
+    public static int board_memo(int n, int[] dp) {
+        if (n == 0) {
+            return dp[n] = 1;
+        }
+        if (dp[n] != 0)
+            return dp[n];
+
+        int ans = 0;
+
+        for (int d = 1; d <= 6 && n - d >= 0; d++) {
+            ans += board_memo(n - d, dp);
+        }
+
+        dp[n] = ans;
+
+        return ans;
+    }
+
+    public static int board_DP(int n, int[] dp) {
+
+        for (int i = 0; i <= n; i++) {
+
+            if (n == 0) {
+                dp[n] = 1;
+                continue;
+            }
+            int ans = 0;
+            for (int d = 1; d <= 6 && n - d >= 0; d++) {
+                ans += dp[n - d];
+            }
+
+            dp[n] = ans;
+        }
+            return dp[n];
+        
+    }
+
+    public static void board(int n) {
+        int[] dp = new int[n + 1];
+        System.out.println(board_memo(n, dp));
+    }
+
     public static void main(String[] args) {
         // int[][] arr = {{1,2,3}, {4,5,6}};
         // print2D(arr);
-        fibo(5);
+        // fibo(5);
+        board(10);
     }
 }
