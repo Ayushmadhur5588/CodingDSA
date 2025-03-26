@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class l003 {
 
     public static void print(int[] arr) {
@@ -99,6 +101,28 @@ public class l003 {
             return dp[n];
         
     }
+
+    public static int board_Op(int n){
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.addLast(1);
+        list.addLast(1);
+
+        for(int i = 2; i <= n; i++){
+            if(list.size() < 6){
+                list.addLast(list.getLast() * 2);
+            }else{
+                list.addLast(list.getLast() * 2 - list.removeFirst());
+            }
+        }
+        return list.getLast();
+    }
+
+
+
+
+
+
 
     public static void board(int n) {
         int[] dp = new int[n + 1];
