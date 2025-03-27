@@ -109,7 +109,7 @@ public class l003 {
         list.addLast(1);
 
         for(int i = 2; i <= n; i++){
-            if(list.size() < 6){
+            if(list.size() <= 6){
                 list.addLast(list.getLast() * 2);
             }else{
                 list.addLast(list.getLast() * 2 - list.removeFirst());
@@ -119,7 +119,42 @@ public class l003 {
     }
 
 
+    public static int mazePath_HDV(int sr, int sc, int er, int ec, int[][] dir, int[][] dp) {
+    
+        if(sr == er && sc == ec){
+            return dp[sr][sc] = 1;
+        }
 
+        if(dp[sr][sc] != 0)return dp[sr][sc]; // already hai to use kr
+
+        int ans = 0;
+        for(int d = 0; d < dir.length; d++){
+            int r = sr + dir[d][0];
+            int c = sc + dir[d][1];
+
+            if(r >= 0 && c >= 0 && r <= er && c <= ec){
+              ans +=  mazePath_HDV(r, c, er, ec, dir, dp);
+            }
+        }
+
+       return dp[sr][sc] = ans;
+
+    }
+
+// Friends Pairing
+public static int friendsPairing_memo(int n, int[] dp) {
+    if (n <= 1) {
+        return dp[n] = 1;
+    }
+
+    if (dp[n] != 0)
+        return dp[n];
+
+    int single = friendsPairing_memo(n - 1, dp);
+    int pairup = friendsPairing_memo(n - 2, dp) * (n - 1);
+
+    return dp[n] = single + pairup;
+}
 
 
 
@@ -133,6 +168,7 @@ public class l003 {
         // int[][] arr = {{1,2,3}, {4,5,6}};
         // print2D(arr);
         // fibo(5);
-        board(10);
+       // board(10);
+
     }
 }

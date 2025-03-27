@@ -338,6 +338,21 @@ public class l001 {
 
         return dp[n] = single + pairup;
     }
+
+    public static int friendsPairing_DP(int N, int[] dp) {
+        for(int n = 0; n <= N; n++){
+        if (n <= 1) {
+             dp[n] = 1;
+             continue;
+        }
+        int single = dp[n - 1];
+        int pairup = dp[n - 2] * (n - 1);
+        dp[n] = single + pairup;
+    }
+        return dp[N];
+    }
+
+
     public static int goldMine_memo(int[][] arr, int r, int c, int[][] dp, int[][] dir) {
         if (c == arr[0].length - 1) {
             return dp[r][c] = arr[r][c];
