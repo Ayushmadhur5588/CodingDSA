@@ -92,6 +92,25 @@ public class l001 {
             return mx - mn;
           }
 
+          public static int LPSS_DP(String str, int I, int J, int[][] dp) {
+            int n = str.length();
+            for (int gap = 0; gap < n; gap++) {
+                for (int i = 0, j = gap; j < n; i++, j++) {
+                    if (i >= j) {
+                        dp[i][j] = (i == j) ? 1 : 0;
+                        continue;
+                    }
+    
+                    if (str.charAt(i) == str.charAt(j))
+                        dp[i][j] = dp[i + 1][j - 1] + 2;// LPSS(str, i + 1, j - 1, dp) + 2;
+                    else
+                        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+                }
+            }
+    
+            return dp[I][J];
+        }
+
           public static String LPSS_StringDP(String str) {
             int n = str.length();
             String[][] dp = new String[n][n];
