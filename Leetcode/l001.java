@@ -163,4 +163,15 @@ public class l001 {
         }   
         return dp[n];
        }
+       public int missingNumber(int[] nums) {
+        int n=nums.length;
+        int total=n*(n+1)/2;
+        int expect=0;
+        for(int num:nums){
+         expect+=num;
+        }
+         return total-expect;
+         
+     }
+     
 }
