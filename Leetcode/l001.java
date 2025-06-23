@@ -174,4 +174,52 @@ public class l001 {
          
      }
      
-}
+
+
+        private long ret;
+        private int count;
+        private int k;
+        private int n;
+    
+        public long kMirror(int k, int n) {
+            ret = 0;
+            count = 0;
+            this.k = k;
+            this.n = n;
+    
+            for (int digit = 1; count < n; digit++) {
+                travelTenMirrorNumber((long)Math.pow(10, digit - 1), 1, 0);
+            }
+    
+            return ret;
+        }
+    
+        private void travelTenMirrorNumber(long highFactor, long lowFactor, long sum) {
+            if (highFactor < lowFactor) {
+                if (isKMirror(k, sum)) {
+                    ret += sum;
+                    count++;
+                }
+            } else {
+                int digit = lowFactor == 1 ? 1 : 0;
+                while (count < n && digit < 10) {
+                    travelTenMirrorNumber(highFactor / 10, lowFactor * 10, sum + digit++ * (highFactor == lowFactor ? highFactor : highFactor + lowFactor));
+                }
+            }
+        }
+    
+        private boolean isKMirror(int k, long num) {
+            long high = (long)Math.pow(k, (int)(Math.log(num)/Math.log(k)));
+            long low = k;
+            while (num > 0) {
+                if (num / high != num % low) {
+                    return false;
+                }
+                num = num % high / low;
+                high /= k * k;
+            }
+            return true;
+        }
+    }
+   
+    
