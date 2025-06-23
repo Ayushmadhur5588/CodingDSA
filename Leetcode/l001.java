@@ -223,7 +223,23 @@ public class l001 {
     
 
 
-        
+        class Solution {
+            public String[] divideString(String s, int k, char fill) {
+                ArrayList<String> list=new ArrayList<>();
+                for(int i=0;i<s.length();i+=k){
+                    int end=Math.min(i+k,s.length());
+                    list.add(s.substring(i,end));
+                }
+                String l=list.get(list.size()-1);
+                if(l.length()<k){
+                    for(int i=l.length();i<k;i++){
+                        l+=fill;
+                    }
+                    list.set(list.size()-1,l);
+                }
+                return list.toArray(new String[0]);
+            }
+        }
        
         }
     
